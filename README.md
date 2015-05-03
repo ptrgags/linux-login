@@ -7,7 +7,12 @@ Some handy scripts for bash shell customization.
 
 ##Installation:
 1. Clone the repository
-2. Add the following lines to your .bashrc
-	. [path/to/repo/]linux-login/login.sh
-	[prompt-command]
+```
+git clone https://github.com/ptrgags/linux-login.git
+```
+1. Add the following lines to your .bashrc
+```	
+. [path/to/repo/]linux-login/login.sh
+[prompt-command]
+```
 where prompt-command is one of the prompt commands in custom-prompts.sh 
