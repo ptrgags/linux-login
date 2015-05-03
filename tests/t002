@@ -1,0 +1,10 @@
+========
+Test 002
+========
+
+Steps:
+- See which variables are global after sourcing
+- Research variable scope
+- Test scope of variables
+
+===============================================

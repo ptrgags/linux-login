@@ -1,0 +1,12 @@
+========
+Test 001
+========
+
+Steps
+- Clone on Azure Server
+- Add server to .bashrc
+- Test login
+
+=============================
+Results:
+- Successful on Azure Linux server
