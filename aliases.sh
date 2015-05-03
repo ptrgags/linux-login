@@ -9,13 +9,11 @@
 # Tested on GNU Bash 4.2.25
 #           Linux 3.13.0
 #			
-# A list of useful aliases. Run
-# this script from a config file
-# (ex. .bashrc). Make sure this
-# script is executable
+# A list of useful aliases. This
+# script is sourced from login.sh
 #
-# Comment out any of these if you do
-# not want them
+# Comment out any of these aliases if you 
+# do not want them
 #
 # TODO: Look up many more aliases to add 
 #

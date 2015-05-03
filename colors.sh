@@ -1,8 +1,10 @@
-# Colors Bash Script
+#!/bin/bash
+#
+# Colors Bash Source
 # 
 # Peter Gagliardi
 # Version 1.1
-# 5/1/15
+# 5/3/15
 #
 # Tested on GNU Bash 4.2.25
 #           Linux 3.13.0
@@ -10,11 +12,7 @@
 # Color constants and utility functions
 # for use in the shell
 #
-# This script is meant to be sourced
-# (ex. from .bashrc)
-#
-# USAGE:
-# . colors
+# This script is sourced from login.sh
 #
 
 #ANSI color codes

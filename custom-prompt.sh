@@ -1,8 +1,8 @@
-# Custom Prompt Bash Script`
+# Custom Prompt Bash Source
 # 
 # Peter Gagliardi
 # Version 1.0
-# 5/1/15
+# 5/3/15
 #
 # Tested on GNU Bash 4.2.25
 #           Linux 3.13.0
@@ -10,16 +10,12 @@
 # A collection of prompts to choose from. More
 # will be added over time.
 # 
-# This file is meant to be sourced from a 
-# config file (such as .bashrc)
+# This file is sourced from login-source.sh 
 #
 # DEPENDENCIES:
-# colors (must be sourced)
+# colors.sh (must be sourced)
 # 
 # USAGE:
-# . custom-prompt
-# [promptFunction]
-#
 # See each function for specific usage
 #
 # TODO: Add better descriptions of each 
