@@ -34,7 +34,7 @@ drexelPrompt() {
 	COLOR1="\[$RED\]"
 	COLOR2="\[$CYAN\]"
 	COLOR3="\[$YELLOW\]"
-	COLOROFF="\[$OFF\]"
+	COLOROFF="\[$NORMAL\]"
 	PS1="$COLOR1<$COLOR2\u$COLOR1@\h:$COLOR3\w$COLOR1>$COLOROFF"
 }
 
@@ -42,7 +42,7 @@ drexelPrompt() {
 # USAGE:
 # colorPrompt COLOR
 colorPrompt() {	
-	PS1="\[$1\]\u@\h \w >\[$OFF\]"
+	PS1="\[$1\]\u@\h \w >\[$NORMAL\]"
 }
 
 # LISP-like prompt
@@ -50,7 +50,7 @@ colorPrompt() {
 # lispPrompt 
 # TODO: Add color options
 lispPrompt() {
-	PS1="\[$YELLOW\](\u \h \w)\n\[$CYAN\]>\[$OFF\]"
+	PS1="\[$YELLOW\](\u \h \w)\n\[$CYAN\]>\[$NORMAL\]"
 }
 
 # Fun two-line prompt
@@ -66,6 +66,6 @@ bracketPrompt() {
 	ADDRESS="\[$YELLOW\]\u@\h"
 	SEPARATOR="\[$WHITE\]]-["
 
-	PS1="[$ADDRESS$SEPARATOR$DIRECT$SEPARATOR$SMILEY]\n-->\[$OFF\]"
+	PS1="[$ADDRESS$SEPARATOR$DIRECT$SEPARATOR$SMILEY]\n-->\[$NORMAL\]"
 
 }
