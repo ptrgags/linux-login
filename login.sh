@@ -3,7 +3,7 @@
 # Login Bash Source
 # 
 # Peter Gagliardi
-# Version 1.0
+# Version 1.1
 # 5/3/15
 #
 # Tested on GNU Bash 4.2.25
@@ -16,6 +16,11 @@
 # source this script from .bashrc
 # . path/to/linux-login/login.sh
 #
-source colors.sh
-source custom-prompt.sh
-source aliases.sh
+
+#Path to this  script
+LOGIN=${BASH_SOURCE[0]%/*}
+
+#Include these scripts
+source $LOGIN/colors.sh
+source $LOGIN/custom-prompt.sh
+source $LOGIN/aliases.sh
