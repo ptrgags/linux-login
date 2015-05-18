@@ -35,22 +35,31 @@ drexelPrompt() {
 }
 
 # Single color prompt
-# USAGE:
+# Format:
+# user@host /current/directory >
+# Usage:
 # colorPrompt COLOR
 colorPrompt() {	
 	PS1="\[$1\]\u@\h \w >\[$NORMAL\]"
 }
 
 # LISP-like prompt
-# USAGE:
+# Format:
+# (user host /current/directory)
+# >
+# Usage:
 # lispPrompt 
 # TODO: Add color options
 lispPrompt() {
 	PS1="\[$YELLOW\](\u \h \w)\n\[$CYAN\]>\[$NORMAL\]"
 }
 
-# Fun two-line prompt
-# USAGE
+# Fun two-line prompt including a smiley indicating
+# sucess of the last status
+# Format:
+# [user@host]-[/current/directory]-[:)]
+# -->
+# Usage:
 # bracketPrompt
 # TODO: Make this code more elegant
 bracketPrompt() {	
@@ -63,5 +72,4 @@ bracketPrompt() {
 	SEPARATOR="\[$WHITE\]]-["
 
 	PS1="[$ADDRESS$SEPARATOR$DIRECT$SEPARATOR$SMILEY]\n-->\[$NORMAL\]"
-
 }
