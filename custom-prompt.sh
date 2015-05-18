@@ -1,7 +1,7 @@
 # Custom Prompt Bash Source
 # 
 # Peter Gagliardi
-# Version 1.0
+# Version 1.1
 # 5/18/15
 #
 # Tested on GNU Bash 4.2.25
@@ -19,11 +19,11 @@
 # See each function for specific usage
 #
 
-# Prompt I made for my account on
-# Drexel's servers
-# TODO: Make this more generic
+# Angle-shaped prompt in three colors
+# Format:
+# <user@host:/current/directory>
 # TODO: Add color options 
-drexelPrompt() {
+anglePrompt() {
 	COLOR1="\[$RED\]"
 	COLOR2="\[$CYAN\]"
 	COLOR3="\[$YELLOW\]"
@@ -33,6 +33,13 @@ drexelPrompt() {
 	unset COLOR2
 	unset COLOR3
 	unset COLOROFF
+}
+
+#alias for anglePrompt for backwards compatibility
+#in version 1.1. Will be removed in version 2.0
+#Deprecated, use anglePrompt instead.
+drexelPrompt() {
+	anglePrompt
 }
 
 # Single color prompt
