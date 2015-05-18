@@ -8,3 +8,11 @@ Steps:
 - Test scope of variables
 
 ===============================================
+Results:
+- custom-prompt.sh sets variables that pollute
+  the global namespace since the script is
+  sourced. 
+===============================================
+Follow-up:
+- unset the variables in custom-prompt.sh after
+  setting PS1
