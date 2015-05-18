@@ -2,7 +2,7 @@
 # 
 # Peter Gagliardi
 # Version 1.0
-# 5/3/15
+# 5/18/15
 #
 # Tested on GNU Bash 4.2.25
 #           Linux 3.13.0
@@ -18,9 +18,6 @@
 # USAGE:
 # See each function for specific usage
 #
-# TODO: Add better descriptions of each 
-# prompt into the comments
-#
 
 # Prompt I made for my account on
 # Drexel's servers
@@ -32,6 +29,10 @@ drexelPrompt() {
 	COLOR3="\[$YELLOW\]"
 	COLOROFF="\[$NORMAL\]"
 	PS1="$COLOR1<$COLOR2\u$COLOR1@\h:$COLOR3\w$COLOR1>$COLOROFF"
+	unset COLOR1
+	unset COLOR2
+	unset COLOR3
+	unset COLOROFF
 }
 
 # Single color prompt
@@ -72,4 +73,7 @@ bracketPrompt() {
 	SEPARATOR="\[$WHITE\]]-["
 
 	PS1="[$ADDRESS$SEPARATOR$DIRECT$SEPARATOR$SMILEY]\n-->\[$NORMAL\]"
+	unset DIRECT
+	unset ADDRESS
+	unset SEPARATOR
 }
