@@ -19,6 +19,15 @@
 # See each function for specific usage
 #
 
+smiley() {
+	if [ $? = 0 ]
+	then 
+		colorEcho $GREEN ":)"
+	else 
+		colorEcho $RED ":( $?"
+	fi
+}
+
 # Angle-shaped prompt in three colors
 # Format:
 # <user@host:/current/directory>
@@ -71,7 +80,7 @@ lispPrompt() {
 # bracketPrompt
 # TODO: Make this code more elegant
 bracketPrompt() {	
-	SMILEY='$(if [ $? = 0 ]; then colorEcho $GREEN ":)"; else colorEcho $RED ":( $?"; fi)'
+	SMILEY='$(smiley)'
 
 	DIRECT="\[$CYAN\]\w"
 	COLOR1="\[$MAGENTA\]"
