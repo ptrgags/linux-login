@@ -60,6 +60,15 @@ colorPrompt() {
 	PS1="\[$1\]\u@\h \w >\[$NORMAL\]"
 }
 
+# Three-color prompt
+# Format:
+# user@host /current/directory $>
+# Usage:
+# triColorPrompt COLOR1 COLOR2 COLOR3
+triColorPrompt() {
+	PS1="\[$1\]\u@\h \[$2\]\w \[$3\]\$> \[$NORMAL\]"
+}
+
 # LISP-like prompt
 # Format:
 # (user host /current/directory)
