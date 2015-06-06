@@ -2,11 +2,8 @@
 # 
 # Peter Gagliardi
 # Version 1.1
-# 5/18/15
+# 6/6/15
 #
-# Tested on GNU Bash 4.2.25
-#           Linux 3.13.0
-#			
 # A collection of prompts to choose from. More
 # will be added over time.
 # 
@@ -20,12 +17,14 @@
 #
 
 smiley() {
-	if [ $? = 0 ]
+	ERROR=$?
+	if [ $ERROR -eq 0 ]
 	then 
 		colorEcho $GREEN ":)"
 	else 
-		colorEcho $RED ":( $?"
+		colorEcho $RED ":( $ERROR"
 	fi
+	unset ERROR
 }
 
 # Angle-shaped prompt in three colors
