@@ -38,6 +38,9 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+#Set permissions
+alias cx='chmod +x'
+
 #Cycle through dirs after using pushd
 alias fw='pushd +1'
 alias bw='pushd -0'
