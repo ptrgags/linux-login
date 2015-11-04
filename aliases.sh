@@ -51,6 +51,17 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+#Expand softlinks
+alias expandlink='cd $(pwd -P)'
+
+#Python debugger and profiler
+alias pdb='python -m pdb'
+alias pprof='python -m cProfile'
+
+#Search for proceses for the current user
+alias psearch='ps ux | grep'
+alias pysearch='psearch python'
+
 #Pretty git graph. Borrowed from
 #http://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
 # with some minor customizations
