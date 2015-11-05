@@ -17,8 +17,12 @@
 # . custom-prompt.sh <path_to_python_script_dir>
 # See each function for specific usage
 #
-MAKE_PROMPT=$1/prompt.py
 
+#
+# Display a green smiley if the last process
+# returned 0, otherwise print a red frown 
+# and the error code
+#
 smiley() {
 	ERROR=$?
 	if [ $ERROR -eq 0 ]
@@ -30,13 +34,17 @@ smiley() {
 	unset ERROR
 }
 
+setPrompt() {
+	PS1=$(prompt.py "$@")
+}
+
 # Angle-shaped prompt in three colors
 # Format:
 # <user@host:/current/directory>
 # Usage:
 # anglePrompt COLOR1 COLOR2 COLOR3
 anglePrompt() {
-	PS1=$($MAKE_PROMPT '|1|<|2|:user:|1|@:host::|3|:cwd:|1|>' ${1:-red} ${2:-cyan} ${3:-yellow})
+	setPrompt '|1|<|2|:user:|1|@:host::|3|:cwd:|1|>' ${1:-red} ${2:-cyan} ${3:-yellow}
 }
 
 #alias for anglePrompt for backwards compatibility
@@ -52,8 +60,7 @@ drexelPrompt() {
 # Usage:
 # colorPrompt COLOR
 colorPrompt() {	
-	PS1=$($MAKE_PROMPT '|1|:user:@:host: :cwd: >' ${1:-red})
-	#PS1="\[$1\]\u@\h \w >\[$NORMAL\]"
+	setPrompt '|1|:user:@:host: :cwd: >' ${1:-red}
 }
 
 # Three-color prompt
@@ -62,7 +69,7 @@ colorPrompt() {
 # Usage:
 # triColorPrompt COLOR1 COLOR2 COLOR3
 triColorPrompt() {
-	PS1=$($MAKE_PROMPT '|1|:user:@:host: |2|:cwd: |3|:sigil>' ${1:-red} ${2:-green} ${3:-blue})
+	setPrompt '|1|:user:@:host: |2|:cwd: |3|:sigil>' ${1:-red} ${2:-green} ${3:-blue}
 }
 
 # LISP-like prompt
@@ -72,7 +79,7 @@ triColorPrompt() {
 # Usage:
 # lispPrompt color1 color2
 lispPrompt() {
-	PS1=$($MAKE_PROMPT '|1|(:user: :host: :cwd:)\n|2|>' ${1:-yellow} ${2:-cyan})
+	setPrompt '|1|(:user: :host: :cwd:)\n|2|>' ${1:-yellow} ${2:-cyan}
 }
 
 # Fun two-line prompt including a smiley indicating
@@ -83,5 +90,5 @@ lispPrompt() {
 # Usage:
 # bracketPrompt address_color cwd_color bracket_color
 bracketPrompt() {
-	export PS1=$($MAKE_PROMPT '|3|[|1|:user:@:host:|3|]-[|2|:cwd:|3|]-[$(smiley)|3|]\n|3|-->' ${1:-yellow} ${2:-cyan} ${3:-white})
+	setPrompt '|3|[|1|:user:@:host:|3|]-[|2|:cwd:|3|]-[$(smiley)|3|]\n|3|-->' ${1:-yellow} ${2:-cyan} ${3:-white}
 }
