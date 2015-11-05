@@ -4,6 +4,7 @@ import re
 
 #Escape code for a color
 escape='\[\033[{}m\]'
+normal=escape.format(0)
 
 #Special effects
 effects = {
@@ -58,22 +59,37 @@ def parse_color(color):
 			elif color in effects:
 				results.append(effects[color])
 	return ';'.join(results)
-			
 
-if __name__ == '__main__':
-	prompt = sys.argv[1]
+def build_prompt(prompt):
+	'''
+	Subsitute variables like :user: and
+	:host: with their bash variables
+	(ex. \u or \h)
+
+	prompt -- the original prompt
+
+	returns the prompt with substitutions made
+	'''
+	for key in bash_vars:
+		if key in prompt:
+			prompt = prompt.replace(key, bash_vars[key])
+	return prompt
+
+def color_prompt(prompt, colors):
+	'''
+	color the prompt, replacing
+	|1|, |2|, ... with entries
+	from colors and 
+	|0| with the code for normal color
+	
+	prompt -- the prompt with 
+	colors -- the list of colors 
+	'''
 
 	#Ensure we clear the color at the end of the prompt
 	if not prompt.endswith('|0|'):
 		prompt += '|0|'
-
-	colors = sys.argv[2:]
-
-	#Replace :<var_name>: with the corresponding bash escape character
-	for key in bash_vars:
-		if key in prompt:
-			prompt = prompt.replace(key, bash_vars[key])
-
+	
 	#Get a list of colors the user specifies
 	colors = [parse_color(color) for color in colors]
 
@@ -83,8 +99,19 @@ if __name__ == '__main__':
 		colorcode = escape.format(color)
 		prompt = prompt.replace(placeholder, colorcode)
 
+	#Replace all normal colors with the 'normal' code
+	prompt = prompt.replace('|0|', normal)
+	
+	return prompt
 
-	#Replace all
-	prompt = prompt.replace('|0|', escape.format(0))
+if __name__ == '__main__':
+	try:
+		prompt = sys.argv[1]
+		colors = sys.argv[2:]
+	except IndexError:
+		sys.exit(1)
+
+	prompt = build_prompt(prompt)
+	prompt = color_prompt(prompt, colors)
 
 	print prompt
