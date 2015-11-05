@@ -1,20 +1,23 @@
 # Custom Prompt Bash Source
 # 
 # Peter Gagliardi
-# Version 1.1
-# 6/6/15
+# Version 1.2
+# 11/4/15
 #
-# A collection of prompts to choose from. More
+# A collection of sample prompts to choose from. More
 # will be added over time.
 # 
-# This file is sourced from login-source.sh 
+# This file is sourced from login-source.sh
 #
 # DEPENDENCIES:
 # colors.sh (must be sourced)
 # 
 # USAGE:
+#
+# . custom-prompt.sh <path_to_python_script_dir>
 # See each function for specific usage
 #
+MAKE_PROMPT=$1/prompt.py
 
 smiley() {
 	ERROR=$?
@@ -30,17 +33,10 @@ smiley() {
 # Angle-shaped prompt in three colors
 # Format:
 # <user@host:/current/directory>
-# TODO: Add color options 
+# Usage:
+# anglePrompt COLOR1 COLOR2 COLOR3
 anglePrompt() {
-	COLOR1="\[$RED\]"
-	COLOR2="\[$CYAN\]"
-	COLOR3="\[$YELLOW\]"
-	COLOROFF="\[$NORMAL\]"
-	PS1="$COLOR1<$COLOR2\u$COLOR1@\h:$COLOR3\w$COLOR1>$COLOROFF"
-	unset COLOR1
-	unset COLOR2
-	unset COLOR3
-	unset COLOROFF
+	PS1=$($MAKE_PROMPT '|1|<|2|:user:|1|@:host::|3|:cwd:|1|>' ${1:-red} ${2:-cyan} ${3:-yellow})
 }
 
 #alias for anglePrompt for backwards compatibility
@@ -56,7 +52,8 @@ drexelPrompt() {
 # Usage:
 # colorPrompt COLOR
 colorPrompt() {	
-	PS1="\[$1\]\u@\h \w >\[$NORMAL\]"
+	PS1=$($MAKE_PROMPT '|1|:user:@:host: :cwd: >' ${1:-red})
+	#PS1="\[$1\]\u@\h \w >\[$NORMAL\]"
 }
 
 # Three-color prompt
@@ -65,7 +62,7 @@ colorPrompt() {
 # Usage:
 # triColorPrompt COLOR1 COLOR2 COLOR3
 triColorPrompt() {
-	PS1="\[$1\]\u@\h \[$2\]\w \[$3\]\$> \[$NORMAL\]"
+	PS1=$($MAKE_PROMPT '|1|:user:@:host: |2|:cwd: |3|:sigil>' ${1:-red} ${2:-green} ${3:-blue})
 }
 
 # LISP-like prompt
@@ -73,10 +70,9 @@ triColorPrompt() {
 # (user host /current/directory)
 # >
 # Usage:
-# lispPrompt 
-# TODO: Add color options
+# lispPrompt color1 color2
 lispPrompt() {
-	PS1="\[$YELLOW\](\u \h \w)\n\[$CYAN\]>\[$NORMAL\]"
+	PS1=$($MAKE_PROMPT '|1|(:user: :host: :cwd:)\n|2|>' ${1:-yellow} ${2:-cyan})
 }
 
 # Fun two-line prompt including a smiley indicating
@@ -85,19 +81,7 @@ lispPrompt() {
 # [user@host]-[/current/directory]-[:)]
 # -->
 # Usage:
-# bracketPrompt
-# TODO: Make this code more elegant
-bracketPrompt() {	
-	SMILEY='$(smiley)'
-
-	DIRECT="\[$CYAN\]\w"
-	COLOR1="\[$MAGENTA\]"
-
-	ADDRESS="\[$YELLOW\]\u@\h"
-	SEPARATOR="\[$WHITE\]]-["
-
-	PS1="[$ADDRESS$SEPARATOR$DIRECT$SEPARATOR$SMILEY]\n-->\[$NORMAL\]"
-	unset DIRECT
-	unset ADDRESS
-	unset SEPARATOR
+# bracketPrompt address_color cwd_color bracket_color
+bracketPrompt() {
+	export PS1=$($MAKE_PROMPT '|3|[|1|:user:@:host:|3|]-[|2|:cwd:|3|]-[$(smiley)|3|]\n|3|-->' ${1:-yellow} ${2:-cyan} ${3:-white})
 }

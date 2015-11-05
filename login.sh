@@ -22,5 +22,5 @@ LOGIN=${BASH_SOURCE[0]%/*}
 
 #Include these scripts
 source $LOGIN/colors.sh
-source $LOGIN/custom-prompt.sh
+source $LOGIN/custom-prompt.sh $LOGIN/prompt
 source $LOGIN/aliases.sh
