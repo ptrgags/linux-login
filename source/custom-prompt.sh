@@ -47,13 +47,6 @@ anglePrompt() {
 	setPrompt '|1|<|2|:user:|1|@:host::|3|:cwd:|1|>' ${1:-red} ${2:-cyan} ${3:-yellow}
 }
 
-#alias for anglePrompt for backwards compatibility
-#in version 1.1. Will be removed in version 2.0
-#Deprecated, use anglePrompt instead.
-drexelPrompt() {
-	anglePrompt
-}
-
 # Single color prompt
 # Format:
 # user@host /current/directory >
