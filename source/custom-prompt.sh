@@ -62,7 +62,7 @@ colorPrompt() {
 # Usage:
 # triColorPrompt COLOR1 COLOR2 COLOR3
 triColorPrompt() {
-	setPrompt '|1|:user:@:host: |2|:cwd: |3|:sigil>' ${1:-red} ${2:-green} ${3:-blue}
+	setPrompt '|1|:user:@:host: |2|:cwd: |3|:sigil:>' ${1:-red} ${2:-green} ${3:-blue}
 }
 
 # LISP-like prompt
