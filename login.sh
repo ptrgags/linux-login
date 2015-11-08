@@ -17,10 +17,12 @@
 # . path/to/linux-login/login.sh
 #
 
-#Path to this  script
+#Path to this script
 LOGIN=${BASH_SOURCE[0]%/*}
+#Allow access to prompt.py from anywhere
+PATH=$PATH:$LOGIN/prompt
 
 #Include these scripts
-source $LOGIN/colors.sh
-source $LOGIN/custom-prompt.sh
-source $LOGIN/aliases.sh
+source $LOGIN/source/colors.sh
+source $LOGIN/source/custom-prompt.sh
+source $LOGIN/source/aliases.sh
