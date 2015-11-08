@@ -52,7 +52,8 @@ def parse_color(color):
 	for color in parts:
 		try:
 			colorNum = int(color)
-			results.append('38;5;{}'.format(colorNum))
+			if 0 <= colorNum < 256:
+				results.append('38;5;{}'.format(colorNum))
 		except ValueError:
 			if color in colors8:
 				results.append(colors8[color])
