@@ -5,7 +5,7 @@ Some handy scripts for Bash shell customization.
 - colored terminal prompts
 - useful aliases 
 - sample .vimrc
-- colorEcho and smiley util functions
+- bonus util functions
 
 ##Installation:
 1. Clone the repository
@@ -118,6 +118,23 @@ setPrompt ':user:@:host: $(date +%s) :cwd:>'
 ```
 
 (displays a Unix timestamp of the current time in the prompt)
+
+#### Error Handling
+
+Since this command is designed to be used in a prompt, all error handling is done silently. If the user enters an invalid color, the `|#|` for that number will be replaced by an empty string.
+
+If the user specifies too few colors, subsequent colors will not be replaced. for example:
+
+```
+setPrompt '|1|Hello |2|World` blue
+```
+
+Will return `Hello |2|World` in blue.
+
+A similar thing happens for variable substitution. non-variables between colons will be ignored.
+
+e.g.: `setPrompt ':user:@:host: :invalid: >` would become something like `ptrgags@ubuntu :invalid: >`
+
 
 ## Aliases
 
