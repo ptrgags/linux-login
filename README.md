@@ -12,7 +12,8 @@ Some handy scripts for Bash shell customization.
 2. Make sure all .sh files have execute permissions set
 3. Add the following lines to your .bashrc
   ```	
-  source [path/to/repo/]linux-login/login.sh  #Add everything in this repo to your environment
+  source [path/to/repo/]linux-login/login.sh  #Add everything in this repo to your 
+                                              #environment
   [prompt-command]                            #Set a customized PS1
   ```
   See [Prompts](#prompts) below for more information about the provided prompts.
@@ -104,14 +105,34 @@ I made a few prompts. These can be used in a bashrc directly:
 |lispPrompt|color1 color2
 |bracketPrompt|color1 color2 color3
 
-#### PS1 Commands
+Some of these were inspired by [this page](https://www.maketecheasier.com/8-useful-and-interesting-bash-prompts/)
+
+#### Adding Bash Commands to the Prompt
 
 If you specify a command inside `$()`, it will be used in the PS1 unaltered.
 
 e.g.:
 
 ```
-setPrompt ':user:@:host: $(date +%s) :cwd:>
+setPrompt ':user:@:host: $(date +%s) :cwd:>'
 ```
 
 (displays a Unix timestamp of the current time in the prompt)
+
+## Aliases
+
+I included a number of useful aliases in this project. It is by no means an exhaustive list of aliases, but it's a nice set for getting started. See `source/aliases.sh` for the full list.
+
+## Bonus Features
+
+### Status Code Smiley
+
+For one of the prompts, I made a status code smiley that takes the output of the last command and displays either a green smiley for success or a frown + error code for failure. The smiley idea was inspired by #1 on [this page](https://www.maketecheasier.com/8-useful-and-interesting-bash-prompts/). It can be embedded in the prompt:
+
+```
+setPrompt ':user:@:host: :cwd: $(smiley)>'
+```
+
+or it can be run by itself:
+
+`smiley`
