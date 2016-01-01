@@ -62,6 +62,9 @@ alias pprof='python -m cProfile'
 alias psearch='ps ux | grep'
 alias pysearch='psearch python'
 
+#Compile CoffeeScript code with watch enabled.
+alias mkcoffee='coffee -w -o scripts/ coffee/'
+
 #Pretty git graph. Borrowed from
 #http://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
 # with some minor customizations
