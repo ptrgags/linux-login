@@ -40,6 +40,7 @@ alias mv='mv -i'
 
 #Set permissions
 alias cx='chmod +x'
+alias cw='chmod +w'
 
 #Cycle through dirs after using pushd
 alias fw='pushd +1'
@@ -54,9 +55,12 @@ alias .....='cd ../../../..'
 #Expand softlinks
 alias expandlink='cd $(pwd -P)'
 
+#Run Python modules
+alias pym='python -m'
+
 #Python debugger and profiler
-alias pdb='python -m pdb'
-alias pprof='python -m cProfile'
+alias pdb='pym pdb'
+alias pprof='pym cProfile'
 
 #Search for proceses for the current user
 alias psearch='ps ux | grep'
