@@ -22,7 +22,14 @@ LOGIN=${BASH_SOURCE[0]%/*}
 #Allow access to prompt.py from anywhere
 PATH=$PATH:$LOGIN/prompt
 
+# Handle 256 color mode when using TMUX
+if [[ $TMUX = '' ]]
+then
+    export TERM=xterm-256color;
+fi
+
 #Include these scripts
-source $LOGIN/source/colors.sh
+source $LOGIN/source/funcs.sh
+#source $LOGIN/source/colors.sh
 source $LOGIN/source/custom-prompt.sh
 source $LOGIN/source/aliases.sh

@@ -83,7 +83,7 @@ setPrompt '|1|:user:|0|@|2|:host: |3|:cwd: :sigil:>' red green blue
 This would print the username in blue, the `@` in the default color, the hostname in green, and the current working directory and sigil in blue. 
 
 Colors can be one of the default 8 colors (`red green blue cyan yellow magenta black white`) or a number from 0 to 255 to
-use 256 color mode. all others will be ignored.
+use 256 color mode. all others will be ignored. To see a list of all colors, type `list_colors`
 
 `bold` and `underline` can be specified for the basic 8 colors with a semicolon in between. 
 
@@ -153,3 +153,14 @@ setPrompt ':user:@:host: :cwd: $(smiley)>'
 or it can be run by itself:
 
 `smiley`
+
+### `color_echo`
+
+You can also print in color with the underlying Python code for coloring the
+prompt:
+
+```
+color_echo <color> <text>
+```
+
+Colors are the same as for `setPrompt`.
