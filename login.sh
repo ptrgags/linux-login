@@ -28,6 +28,11 @@ then
     export TERM=xterm-256color;
 fi
 
+# Echo in color
+function color_echo {
+    $LOGIN/prompt/color_echo.py $1 ${@:2}
+}
+
 #Include these scripts
 source $LOGIN/source/colors.sh
 source $LOGIN/source/custom-prompt.sh
