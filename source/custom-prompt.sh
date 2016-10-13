@@ -27,9 +27,12 @@ smiley() {
 	ERROR=$?
 	if [ $ERROR -eq 0 ]
 	then 
-		colorEcho $GREEN ":)"
-	else 
-		colorEcho $RED ":( $ERROR"
+	    color_echo green ":)"
+	elif [ $ERROR -eq 130 ]
+    then
+        color_echo yellow ":|"
+    else
+		color_echo green ":( $ERROR"
 	fi
 	unset ERROR
 }

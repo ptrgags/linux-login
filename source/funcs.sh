@@ -29,3 +29,18 @@ function fds {
 function todogrep {
     egrep -r 'TODO|FIXME|XXX|HACK' .
 }
+
+# Echo in color
+function color_echo {
+    color_echo.py $1 ${@:2}
+}
+
+# List all the 256 color codes.
+# It makes a nice rainbow affect down the
+# terminal!
+function list_colors {
+    for i in $(seq 0 255)
+    do
+        color_echo.py $i $i
+    done
+}
