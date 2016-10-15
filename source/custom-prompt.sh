@@ -32,7 +32,7 @@ smiley() {
     then
         color_echo yellow ":|"
     else
-		color_echo green ":( $ERROR"
+		color_echo red ":( $ERROR"
 	fi
 	unset ERROR
 }
