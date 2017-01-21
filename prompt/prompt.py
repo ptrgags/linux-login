@@ -36,7 +36,7 @@ bash_vars = {
 	':time24:': '\\t',
 	':time12:': '\T',
 	':time:': '\@',
-	':user:': '\u',
+	':user:': '\\u',
 	':version:': '\\v',
 	':release:': '\V',
 	':cwd:': '\w',
@@ -62,15 +62,15 @@ def parse_color(color):
 	return ';'.join(results)
 
 def build_prompt(prompt):
-	'''
+	"""
 	Subsitute variables like :user: and
 	:host: with their bash variables
-	(ex. \u or \h)
+	(ex. \\u or \h)
 
 	prompt -- the original prompt
 
 	returns the prompt with substitutions made
-	'''
+	"""
 	for key in bash_vars:
 		if key in prompt:
 			prompt = prompt.replace(key, bash_vars[key])
@@ -80,17 +80,17 @@ def color_prompt(prompt, colors):
 	'''
 	color the prompt, replacing
 	|1|, |2|, ... with entries
-	from colors and 
+	from colors and
 	|0| with the code for normal color
-	
-	prompt -- the prompt with 
-	colors -- the list of colors 
+
+	prompt -- the prompt with
+	colors -- the list of colors
 	'''
 
 	#Ensure we clear the color at the end of the prompt
 	if not prompt.endswith('|0|'):
 		prompt += '|0|'
-	
+
 	#Get a list of colors the user specifies
 	colors = [parse_color(color) for color in colors]
 
@@ -102,7 +102,7 @@ def color_prompt(prompt, colors):
 
 	#Replace all normal colors with the 'normal' code
 	prompt = prompt.replace('|0|', normal)
-	
+
 	return prompt
 
 if __name__ == '__main__':
@@ -115,4 +115,4 @@ if __name__ == '__main__':
 	prompt = build_prompt(prompt)
 	prompt = color_prompt(prompt, colors)
 
-	print prompt
+	print(prompt)
