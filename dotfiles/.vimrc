@@ -23,3 +23,29 @@ syntax on
 if has('mouse')
 	set mouse=a
 endif
+
+"Set leader
+let mapleader = ","
+
+"Leader commands ================================
+"Toggle paste mode
+set pastetoggle=<leader>z
+"change to previous/next tab
+noremap <leader>h gT
+noremap <leader>l gt
+"toggle line numbers (for easier copying/pasting in PuTTY)
+noremap <leader>n :set nonumber! norelativenumber!<CR>
+"================================================
+
+"Set filetypes
+au BufRead,BufNewFile *.rs set filetype=rust
+
+"tabedit for multiple tabs. This accepts glob patterns.
+function! Multitabs(...)
+    for i in a:000
+        for fname in split(glob(i), '\n')
+            exe 'tabedit' fname
+        endfor
+    endfor
+endfunction
+command! -nargs=* -complete=file Tabs call Multitabs(<f-args>)
