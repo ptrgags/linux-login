@@ -38,7 +38,7 @@ smiley() {
 }
 
 setPrompt() {
-	PS1=$(prompt.py "$@")
+	PS1=$(python $LOGIN/prompt/prompt.py "$@")
 }
 
 # Angle-shaped prompt in three colors
