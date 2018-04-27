@@ -2,6 +2,7 @@
 """
 Little Python script for echoing in a color
 """
+from __future__ import print_function
 import argparse
 from prompt import parse_color
 
@@ -18,4 +19,4 @@ if __name__ == '__main__':
     color = parse_color(args.color)
     esc_color = ESCAPE.format(color)
     text = " ".join(args.text)
-    print "{}{}{}".format(esc_color, text, NORMAL)
+    print("{}{}{}".format(esc_color, text, NORMAL))
