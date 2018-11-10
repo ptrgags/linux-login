@@ -49,3 +49,15 @@ function! Multitabs(...)
     endfor
 endfunction
 command! -nargs=* -complete=file Tabs call Multitabs(<f-args>)
+
+"Open a C/C++ file side-by-side with its h file. Just specify
+"the .c/.cpp filename.
+function! CppSplit(cpp_file)
+    " Replace .c/.cpp with .h
+    let h_file = fnamemodify(a:cpp_file, ':r') . '.h'
+    " Open the .h file
+    exe 'tabedit' h_file
+    " Split the window and open the .c/.cpp file on the right
+    exe 'vsplit' a:cpp_file
+endfunction
+command! -nargs=1 -complete=file CSplit call CppSplit(<f-args>)
