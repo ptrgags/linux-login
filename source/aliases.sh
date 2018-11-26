@@ -52,6 +52,9 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+# Usually I want to ssh with x-forwarding
+alias ssh='ssh -X'
+
 #Expand softlinks
 alias expandlink='cd $(pwd -P)'
 
@@ -75,3 +78,10 @@ alias mkcoffee='coffee -w -o scripts/ coffee/'
 alias gitgraph=$'git log --graph --abbrev-commit --decorate --date=relative --format=format:\'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- [%an]%C(reset)%C(bold yellow)%d%C(reset)\' --all'
 #Git Graph in date order
 alias gitgraphd='gitgraph --date-order'
+
+# List the contents of a zip file
+alias zipl='unzip -l'
+
+# throw errors instead of warnings on missing files
+# I've been burned before...
+alias zip='zip --must-match'
